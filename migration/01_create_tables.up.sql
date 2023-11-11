@@ -21,3 +21,40 @@ CREATE TABLE "questions" (
     "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP
 );
+
+
+CREATE TABLE "posts" (
+    "id" UUID PRIMARY KEY,
+    "title" VARCHAR NOT NULL,
+    "context" VARCHAR NOT NULL,
+    "link" VARCHAR,
+    "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP
+);
+
+
+CREATE TABLE "reports" (
+    "id" UUID PRIMARY KEY,
+    "report_status" VARCHAR NOT NULL,
+    "description" VARCHAR,
+    "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP
+);
+
+
+CREATE TABLE "tools" (
+    "id" UUID PRIMARY KEY,
+    "tool_name" VARCHAR NOT NULL,
+    "link" VARCHAR,
+    "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP
+);
+
+
+CREATE TABLE "databases" (
+    "id" UUID PRIMARY KEY,
+    "database_name" VARCHAR NOT NULL,
+    "link" VARCHAR,
+    "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP
+);

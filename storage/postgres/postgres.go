@@ -14,6 +14,10 @@ type store struct {
 	db       *pgxpool.Pool
 	user     *userRepo
 	question *questionRepo
+	post     *postRepo
+	report   *reportRepo
+	tool     *toolRepo
+	database *databaseRepo
 }
 
 func NewConnectionPostgres(cfg *config.Config) (storage.StorageI, error) {
@@ -62,4 +66,40 @@ func (s *store) Question() storage.QuestionRepoI {
 	}
 
 	return s.question
+}
+
+func (s *store) Post() storage.PostRepoI {
+
+	if s.post == nil {
+		s.post = NewPostRepo(s.db)
+	}
+
+	return s.post
+}
+
+func (s *store) Report() storage.ReportRepoI {
+
+	if s.report == nil {
+		s.report = NewReportRepo(s.db)
+	}
+
+	return s.report
+}
+
+func (s *store) Tool() storage.ToolRepoI {
+
+	if s.tool == nil {
+		s.tool = NewToolRepo(s.db)
+	}
+
+	return s.tool
+}
+
+func (s *store) Database() storage.DatabaseRepoI {
+
+	if s.database == nil {
+		s.database = NewDatabaseRepo(s.db)
+	}
+
+	return s.database
 }

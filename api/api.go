@@ -41,6 +41,30 @@ func NewApi(r *gin.Engine, cfg *config.Config, storage storage.StorageI, logger 
 	r.PUT("/question/:id", handler.UpdateQuestion)
 	r.DELETE("/question/:id", handler.DeleteQuestion)
 
+	r.POST("/post", handler.CreatePost)
+	r.GET("/post/:id", handler.GetByIdPost)
+	r.GET("/post", handler.GetListPost)
+	r.PUT("/post/:id", handler.UpdatePost)
+	r.DELETE("/post/:id", handler.DeletePost)
+
+	r.POST("/report", handler.CreateReport)
+	r.GET("/report/:id", handler.GetByIdReport)
+	r.GET("/report", handler.GetListReport)
+	r.PUT("/report/:id", handler.UpdateReport)
+	r.DELETE("/report/:id", handler.DeleteReport)
+
+	r.POST("/tool", handler.CreateTool)
+	r.GET("/tool/:id", handler.GetByIdTool)
+	r.GET("/tool", handler.GetListTool)
+	r.PUT("/tool/:id", handler.UpdateTool)
+	r.DELETE("/tool/:id", handler.DeleteTool)
+
+	r.POST("/database", handler.CreateDatabase)
+	r.GET("/database/:id", handler.GetByIdDatabase)
+	r.GET("/database", handler.GetListDatabase)
+	r.PUT("/database/:id", handler.UpdateDatabase)
+	r.DELETE("/database/:id", handler.DeleteDatabase)
+
 	url := ginSwagger.URL("swagger/doc.json") // The url pointing to API definition
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 }
