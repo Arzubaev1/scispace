@@ -13,14 +13,28 @@ func (h *handler) AuthMiddleware() gin.HandlerFunc {
 
 		value := c.GetHeader("Authorization")
 
-		info, err := helper.ParseClaims(value, h.cfg.SecretKey)
+		info_other, err := helper.ParseClaimsForOther(value, h.cfg.SecretKey)
 
 		if err != nil {
 			c.AbortWithError(http.StatusForbidden, err)
 			return
 		}
 
-		c.Set("Auth", info)
+		info_tadqiqotchi, err := helper.ParseClaimsForTadqiqotchi(value, h.cfg.SecretKey)
+
+		if err != nil {
+			c.AbortWithError(http.StatusForbidden, err)
+			return
+		}
+		info_oqituvchi, err := helper.ParseClaimsForOqituvchi(value, h.cfg.SecretKey)
+
+		if err != nil {
+			c.AbortWithError(http.StatusForbidden, err)
+			return
+		}
+		c.Set("Auth", info_other)
+		c.Set("Auth", info_tadqiqotchi)
+		c.Set("Auth", info_oqituvchi)
 		c.Next()
 	}
 }

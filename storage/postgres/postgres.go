@@ -11,13 +11,21 @@ import (
 )
 
 type store struct {
-	db       *pgxpool.Pool
-	user     *userRepo
-	question *questionRepo
-	post     *postRepo
-	report   *reportRepo
-	tool     *toolRepo
-	database *databaseRepo
+	db            *pgxpool.Pool
+	user          *userRepo
+	question      *questionRepo
+	post          *postRepo
+	report        *reportRepo
+	tool          *toolRepo
+	database      *databaseRepo
+	oqituvchi     *oqituvchiRepo
+	tadqiqotchi   *tadqiqotchiRepo
+	other         *otherRepo
+	mutahassislik *mutahassislikRepo
+	fan_tarmogi   *fan_tarmogiRepo
+	mavzu         *mavzuRepo
+	ish_joyi      *ish_joyiRepo
+	maqola        *maqolaRepo
 }
 
 func NewConnectionPostgres(cfg *config.Config) (storage.StorageI, error) {
@@ -102,4 +110,54 @@ func (s *store) Database() storage.DatabaseRepoI {
 	}
 
 	return s.database
+}
+func (s *store) Oqituvchi() storage.OqituvchiRepoI {
+	if s.oqituvchi == nil {
+		s.oqituvchi = NewOqituvchiRepo(s.db)
+	}
+	return s.oqituvchi
+}
+
+func (s *store) Tadqiqotchi() storage.TadqiqotchiRepoI {
+	if s.tadqiqotchi == nil {
+		s.tadqiqotchi = NewTadqiqotchiRepo(s.db)
+	}
+	return s.tadqiqotchi
+}
+func (s *store) Other() storage.OtherRepoI {
+	if s.other == nil {
+		s.other = NewOtherRepo(s.db)
+	}
+	return s.other
+}
+func (s *store) IshJoyi() storage.IshJoyiRepoI {
+	if s.ish_joyi == nil {
+		s.ish_joyi = NewIshJoyiRepo(s.db)
+	}
+	return s.ish_joyi
+}
+func (s *store) Mutahassislik() storage.MutahassislikRepoI {
+	if s.mutahassislik == nil {
+		s.mutahassislik = NewMutahassislikRepo(s.db)
+	}
+	return s.mutahassislik
+}
+func (s *store) FanTarmogi() storage.FanTarmogiRepoI {
+	if s.fan_tarmogi == nil {
+		s.fan_tarmogi = NewFanTarmogiRepo(s.db)
+	}
+	return s.fan_tarmogi
+
+}
+func (s *store) Mavzu() storage.MavzuRepoI {
+	if s.mavzu == nil {
+		s.mavzu = NewMavzuRepo(s.db)
+	}
+	return s.mavzu
+}
+func (s *store) Maqola() storage.MaqolaRepoI {
+	if s.maqola == nil {
+		s.maqola = NewMaqolaRepo(s.db)
+	}
+	return s.maqola
 }

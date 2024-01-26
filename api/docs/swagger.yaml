@@ -14,6 +14,54 @@ definitions:
       link:
         type: string
     type: object
+  models.CreateOqituvchi:
+    properties:
+      FanTarmogi:
+        type: string
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      ish_joyi:
+        type: string
+      last_name:
+        type: string
+      mavzular:
+        type: string
+      middle_name:
+        type: string
+      mutahassislik:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  models.CreateOther:
+    properties:
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      mavzular:
+        type: string
+      middle_name:
+        type: string
+      oqish_joyi:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      yonalish:
+        type: string
+    type: object
   models.CreatePost:
     properties:
       context:
@@ -37,6 +85,29 @@ definitions:
       description:
         type: string
       report_status:
+        type: string
+    type: object
+  models.CreateTadqiqotchi:
+    properties:
+      FanTarmogi:
+        type: string
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      mavzular:
+        type: string
+      middle_name:
+        type: string
+      oqish_joyi:
+        type: string
+      password:
+        type: string
+      phone_number:
         type: string
     type: object
   models.CreateTool:
@@ -77,6 +148,58 @@ definitions:
       link:
         type: string
     type: object
+  models.UpdateOqituvchi:
+    properties:
+      FanTarmogi:
+        type: string
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: string
+      ish_joyi:
+        type: string
+      last_name:
+        type: string
+      mavzular:
+        type: string
+      middle_name:
+        type: string
+      mutahassislik:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  models.UpdateOther:
+    properties:
+      Yonalish:
+        type: string
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      mavzular:
+        type: string
+      middle_name:
+        type: string
+      oqish_joyi:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+    type: object
   models.UpdatePost:
     properties:
       context:
@@ -108,6 +231,31 @@ definitions:
       report_status:
         type: string
     type: object
+  models.UpdateTadqiqotchi:
+    properties:
+      FanTarmogi:
+        type: string
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      mavzular:
+        type: string
+      middle_name:
+        type: string
+      oqish_joyi:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+    type: object
   models.UpdateTool:
     properties:
       id:
@@ -115,23 +263,6 @@ definitions:
       link:
         type: string
       tool_name:
-        type: string
-    type: object
-  models.UpdateUser:
-    properties:
-      Institution:
-        type: string
-      degree:
-        type: string
-      department:
-        type: string
-      email:
-        type: string
-      fullname:
-        type: string
-      id:
-        type: string
-      password:
         type: string
     type: object
 info:
@@ -406,6 +537,460 @@ paths:
       summary: Login
       tags:
       - Login
+  /oqituvchi:
+    get:
+      consumes:
+      - application/json
+      description: Get List Oqituvchi
+      operationId: get_list_oqituvchi
+      parameters:
+      - description: offset
+        in: query
+        name: offset
+        type: string
+      - description: limit
+        in: query
+        name: limit
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Get List Oqituvchi
+      tags:
+      - Oqituvchi
+    post:
+      consumes:
+      - application/json
+      description: Create Oqituvchi
+      operationId: create_oqituvchi
+      parameters:
+      - description: CreateOqituvchiRequest
+        in: body
+        name: oqituvchi
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateOqituvchi'
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Create Oqituvchi
+      tags:
+      - Oqituvchi
+  /oqituvchi/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Oqituvchi
+      operationId: delete_oqituvchi
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Oqituvchi
+      tags:
+      - Oqituvchi
+    get:
+      consumes:
+      - application/json
+      description: Get By ID Oqituvchi
+      operationId: get_by_id_oqituvchi
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Get By ID Oqituvchi
+      tags:
+      - Oqituvchi
+    put:
+      consumes:
+      - application/json
+      description: Update Oqituvchi
+      operationId: update_oqituvchi
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: UpdateOqituvchiRequest
+        in: body
+        name: oqituvchi
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateOqituvchi'
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Update Oqituvchi
+      tags:
+      - Oqituvchi
+  /other:
+    get:
+      consumes:
+      - application/json
+      description: Get List Other
+      operationId: get_list_other
+      parameters:
+      - description: offset
+        in: query
+        name: offset
+        type: string
+      - description: limit
+        in: query
+        name: limit
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Get List Other
+      tags:
+      - Other
+    post:
+      consumes:
+      - application/json
+      description: Create Other
+      operationId: create_other
+      parameters:
+      - description: CreateOtherRequest
+        in: body
+        name: other
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateOther'
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Create Other
+      tags:
+      - Other
+  /other/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Other
+      operationId: delete_other
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Other
+      tags:
+      - Other
+    get:
+      consumes:
+      - application/json
+      description: Get By ID Other
+      operationId: get_by_id_other
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Get By ID Other
+      tags:
+      - Other
+    put:
+      consumes:
+      - application/json
+      description: Update Other
+      operationId: update_other
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: UpdateOtherRequest
+        in: body
+        name: other
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateOther'
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Update Other
+      tags:
+      - Other
   /post:
     get:
       consumes:
@@ -1131,6 +1716,233 @@ paths:
       summary: Update Report
       tags:
       - Report
+  /tadqiqotchi:
+    get:
+      consumes:
+      - application/json
+      description: Get List Tadqiqotchi
+      operationId: get_list_tadqiqotchi
+      parameters:
+      - description: offset
+        in: query
+        name: offset
+        type: string
+      - description: limit
+        in: query
+        name: limit
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Get List Tadqiqotchi
+      tags:
+      - Tadqiqotchi
+    post:
+      consumes:
+      - application/json
+      description: Create Tadqiqotchi
+      operationId: create_tadqiqotchi
+      parameters:
+      - description: CreateTadqiqotchiRequest
+        in: body
+        name: tadqiqotchi
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateTadqiqotchi'
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Create Tadqiqotchi
+      tags:
+      - Tadqiqotchi
+  /tadqiqotchi/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Tadqiqotchi
+      operationId: delete_tadqiqotchi
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Delete Tadqiqotchi
+      tags:
+      - Tadqiqotchi
+    get:
+      consumes:
+      - application/json
+      description: Get By ID Tadqiqotchi
+      operationId: get_by_id_tadqiqotchi
+      parameters:
+      - description: id
+        in: path
+        name: id
+        type: string
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Get By ID Tadqiqotchi
+      tags:
+      - Tadqiqotchi
+    put:
+      consumes:
+      - application/json
+      description: Update Tadqiqotchi
+      operationId: update_tadqiqotchi
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: UpdateTadqiqotchiRequest
+        in: body
+        name: tadqiqotchi
+        required: true
+        schema:
+          $ref: '#/definitions/models.UpdateTadqiqotchi'
+      responses:
+        "200":
+          description: Success Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+        "500":
+          description: Server error
+          schema:
+            allOf:
+            - $ref: '#/definitions/handler.Response'
+            - properties:
+                data:
+                  type: string
+              type: object
+      summary: Update Tadqiqotchi
+      tags:
+      - Tadqiqotchi
   /tool:
     get:
       consumes:
@@ -1356,233 +2168,6 @@ paths:
       summary: Update Tool
       tags:
       - Tool
-  /user:
-    get:
-      consumes:
-      - application/json
-      description: Get List User
-      operationId: get_list_user
-      parameters:
-      - description: offset
-        in: query
-        name: offset
-        type: string
-      - description: limit
-        in: query
-        name: limit
-        type: string
-      responses:
-        "200":
-          description: Success Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "400":
-          description: Bad Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "500":
-          description: Server error
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-      summary: Get List User
-      tags:
-      - User
-    post:
-      consumes:
-      - application/json
-      description: Create User
-      operationId: create_user
-      parameters:
-      - description: CreateUserRequest
-        in: body
-        name: user
-        required: true
-        schema:
-          $ref: '#/definitions/models.CreateUser'
-      responses:
-        "200":
-          description: Success Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "400":
-          description: Bad Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "500":
-          description: Server error
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: Create User
-      tags:
-      - User
-  /user/{id}:
-    delete:
-      consumes:
-      - application/json
-      description: Delete User
-      operationId: delete_user
-      parameters:
-      - description: id
-        in: path
-        name: id
-        required: true
-        type: string
-      responses:
-        "200":
-          description: Success Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "400":
-          description: Bad Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "500":
-          description: Server error
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: Delete User
-      tags:
-      - User
-    get:
-      consumes:
-      - application/json
-      description: Get By ID User
-      operationId: get_by_id_user
-      parameters:
-      - description: id
-        in: path
-        name: id
-        type: string
-      responses:
-        "200":
-          description: Success Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "400":
-          description: Bad Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "500":
-          description: Server error
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-      security:
-      - ApiKeyAuth: []
-      summary: Get By ID User
-      tags:
-      - User
-    put:
-      consumes:
-      - application/json
-      description: Update User
-      operationId: update_user
-      parameters:
-      - description: id
-        in: path
-        name: id
-        required: true
-        type: string
-      - description: UpdateUserRequest
-        in: body
-        name: user
-        required: true
-        schema:
-          $ref: '#/definitions/models.UpdateUser'
-      responses:
-        "200":
-          description: Success Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "400":
-          description: Bad Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-        "500":
-          description: Server error
-          schema:
-            allOf:
-            - $ref: '#/definitions/handler.Response'
-            - properties:
-                data:
-                  type: string
-              type: object
-      summary: Update User
-      tags:
-      - User
 securityDefinitions:
   ApiKeyAuth:
     in: header

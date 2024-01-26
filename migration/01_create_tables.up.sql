@@ -1,17 +1,68 @@
 
-
-CREATE TABLE "users" (
+CREATE TABLE "ish_joyi"(
     "id" UUID PRIMARY KEY,
-    "fullname" VARCHAR(50) NOT NULL,
-    "institution" VARCHAR(50) NOT NULL,
-    "department" VARCHAR(50) NOT NULL,
-    "degree" VARCHAR(50) NOT NULL,
-    "email" VARCHAR(50) NOT NULL,
-    "password" VARCHAR(50) NOT NULL,
+    "name" VARCHAR(50) NOT NULL
+)
+CREATE TABLE "mutahassislik"(
+    "id" UUID PRIMARY KEY,
+    "name" VARCHAR(50) NOT NULL
+)
+CREATE TABLE "fan_tarmogi"(
+    "id" UUID PRIMARY KEY,
+    "name" VARCHAR(50) NOT NULL
+)
+CREATE TABLE "mavzu"(
+    "id" UUID PRIMARY KEY,
+    "name" VARCHAR(50) NOT NULL
+)
+CREATE TABLE "oqituvchi"(
+    "id" UUID PRIMARY KEY,
+    "first_name"  VARCHAR(50) NOT NULL,
+    "last_name"  VARCHAR(50) NOT NULL,
+    "middle_name"  VARCHAR(50) NOT NULL,
+    "date_of_birth"  VARCHAR(50) NOT NULL,
+    "ish_joyi"  UUID NOT NULL,
+    "mutahassislik"  UUID  NOT NULL,
+    "fan_tarmogi"  UUID  NOT NULL,
+    "mavzular"  UUID  NOT NULL,
+    "email"  VARCHAR(50) NOT NULL,
+    "password"  VARCHAR(50) NOT NULL,
+    "phone_number"  VARCHAR(50) NOT NULL,
     "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP
-);
+    "updated_at" TIMESTAMP 
+)
 
+CREATE TABLE "tadqiqotchi"(
+    "id" UUID PRIMARY KEY,
+    "first_name"  VARCHAR(50) NOT NULL,
+    "last_name"  VARCHAR(50) NOT NULL,
+    "middle_name"  VARCHAR(50) NOT NULL,
+    "date_of_birth"  VARCHAR(50) NOT NULL,
+    "oqish_joyi"  UUID NOT NULL,
+    "fan_tarmogi"  UUID  NOT NULL,
+    "mavzu"  UUID  NOT NULL,
+    "email"  VARCHAR(50) NOT NULL,
+    "password"  VARCHAR(50) NOT NULL,
+    "phone_number"  VARCHAR(50) NOT NULL,
+    "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP 
+)
+
+CREATE TABLE "other"(
+    "id" UUID PRIMARY KEY,
+    "first_name"  VARCHAR(50) NOT NULL,
+    "last_name"  VARCHAR(50) NOT NULL,
+    "middle_name"  VARCHAR(50) NOT NULL,
+    "date_of_birth"  VARCHAR(50) NOT NULL,
+    "oqish_joyi"  UUID NOT NULL,
+    "yonalish"  UUID  NOT NULL,
+    "mavzular"  UUID  NOT NULL,
+    "email"  VARCHAR(50) NOT NULL,
+    "password"  VARCHAR(50) NOT NULL,
+    "phone_number"  VARCHAR(50) NOT NULL,
+    "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP 
+)
 
 CREATE TABLE "questions" (
     "id" UUID PRIMARY KEY,
@@ -58,3 +109,11 @@ CREATE TABLE "databases" (
     "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP
 );
+CREATE TABLE "maqola"(
+    "id" UUID PRIMARY KEY,
+    "name" VARCHAR NOT NULL,
+    "tavsifi" TEXT NOT NULL,
+    "qoshimcha_linklar" VARCHAR NOT NULL,
+    "created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP
+)

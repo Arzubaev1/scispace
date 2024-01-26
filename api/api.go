@@ -28,13 +28,6 @@ func NewApi(r *gin.Engine, cfg *config.Config, storage storage.StorageI, logger 
 	// Register Api
 	r.POST("/register", handler.Register)
 
-	// User Api
-	r.POST("/user", handler.AuthMiddleware(), handler.CreateUser)
-	r.GET("/user/:id", handler.AuthMiddleware(), handler.GetByIdUser)
-	r.GET("/user", handler.GetListUser)
-	r.PUT("/user/:id", handler.UpdateUser)
-	r.DELETE("/user/:id", handler.AuthMiddleware(), handler.DeleteUser)
-
 	r.POST("/question", handler.CreateQuestion)
 	r.GET("/question/:id", handler.GetByIdQuestion)
 	r.GET("/question", handler.GetListQuestion)
@@ -46,6 +39,48 @@ func NewApi(r *gin.Engine, cfg *config.Config, storage storage.StorageI, logger 
 	r.GET("/post", handler.GetListPost)
 	r.PUT("/post/:id", handler.UpdatePost)
 	r.DELETE("/post/:id", handler.DeletePost)
+
+	r.POST("/post", handler.CreateOqituvchi)
+	r.GET("/post/:id", handler.GetByIdOqituvchi)
+	r.GET("/post", handler.GetListOqituvchi)
+	r.PUT("/post/:id", handler.UpdateOqituvchi)
+	r.DELETE("/post/:id", handler.DeleteOqituvchi)
+
+	r.POST("/post", handler.CreateTadqiqotchi)
+	r.GET("/post/:id", handler.GetByIdTadqiqotchi)
+	r.GET("/post", handler.GetListTadqiqotchi)
+	r.PUT("/post/:id", handler.UpdateTadqiqotchi)
+	r.DELETE("/post/:id", handler.DeleteTadqiqotchi)
+
+	r.POST("/post", handler.CreateOther)
+	r.GET("/post/:id", handler.GetByIdOther)
+	r.GET("/post", handler.GetListOther)
+	r.PUT("/post/:id", handler.UpdateOther)
+	r.DELETE("/post/:id", handler.DeleteOther)
+
+	r.POST("/post", handler.CreateIshJoyi)
+	r.GET("/post/:id", handler.GetByIdIshJoyi)
+	r.GET("/post", handler.GetListIshJoyi)
+	r.PUT("/post/:id", handler.UpdateIshJoyi)
+	r.DELETE("/post/:id", handler.DeleteIshJoyi)
+
+	r.POST("/post", handler.CreateMutahassislik)
+	r.GET("/post/:id", handler.GetByIdMutahassislik)
+	r.GET("/post", handler.GetListMutahassislik)
+	r.PUT("/post/:id", handler.UpdateMutahassislik)
+	r.DELETE("/post/:id", handler.DeleteMutahassislik)
+
+	r.POST("/post", handler.CreateMavzu)
+	r.GET("/post/:id", handler.GetByIdMavzu)
+	r.GET("/post", handler.GetListMavzu)
+	r.PUT("/post/:id", handler.UpdateMavzu)
+	r.DELETE("/post/:id", handler.DeleteMavzu)
+
+	r.POST("/post", handler.CreateFanTarmogi)
+	r.GET("/post/:id", handler.GetByIdFanTarmogi)
+	r.GET("/post", handler.GetListFanTarmogi)
+	r.PUT("/post/:id", handler.UpdateFanTarmogi)
+	r.DELETE("/post/:id", handler.DeleteFanTarmogi)
 
 	r.POST("/report", handler.CreateReport)
 	r.GET("/report/:id", handler.GetByIdReport)
